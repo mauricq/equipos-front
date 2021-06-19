@@ -1,0 +1,30 @@
+
+<section class="equipos">
+  <h1>Equipos</h1>
+
+  <DataTable
+          :value="equipos"
+          :paginator="true"
+          :rows="10"
+          selection-mode="single"
+          data-key="id"
+          :selection.sync="equipoSeleccionado"
+          @row-select="onRowSelect"
+  >
+    <template #header>
+      <Button label="Agregar" icon="pi pi-plus" />
+      <Button label="Editar" icon="pi pi-pencil" class="p-button-warning" style=""/>
+      <Button label="Borrar" icon="pi pi-trash" class="p-button-danger" style=""/>
+    </template>
+    <Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column>
+    <template #paginatorRight>
+      <Button type="button" icon="pi pi-refresh" />
+    </template>
+    <template #footer>
+      Existen {{equipos ? equipos.length : 0 }} equipos registrados en total.
+    </template>
+
+  </DataTable>
+
+</section>
+
